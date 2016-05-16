@@ -15,7 +15,6 @@ while True:
     if GPIO.input(sensor) == False:
         print("Presence detected")
         camera.capture('image.jpg')
-    else:
-        print("Presence not detected")
+        break
 
 GPIO.cleanup()
