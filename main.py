@@ -1,12 +1,14 @@
 import RPi.GPIO as GPIO
 import time
 
-led = 4
+sensor = 4
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
-GPIO.setup(led, GPIO.OUT)
-GPIO.output(led, 1)
-time.sleep(5)
-GPIO.output(led, 0)
+GPIO.setup(sensor, GPIO.IN, GPIO.PUD_UP)
+while True:
+    if GPIO.input(sensor) == False:
+        print("Presence detected")
+    else:
+        print("Presence not detected")
 GPIO.cleanup()
