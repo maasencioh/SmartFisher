@@ -10,11 +10,14 @@ GPIO.setwarnings(False)
 
 GPIO.setup(sensor, GPIO.IN, GPIO.PUD_UP)
 
+id = 1
+
 while True:
     time.sleep(0.5)
     if GPIO.input(sensor) == False:
-        print("Presence detected")
-        camera.capture('image.jpg')
-        break
+        print "Presence detected:" + str(id)
+        camera.capture('imgs/red_'+str(id)+'.jpg')
+        id += 1
+
 
 GPIO.cleanup()
